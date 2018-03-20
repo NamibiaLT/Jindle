@@ -12,24 +12,24 @@ RSpec.describe Book, type: :model do
   describe '.published' do
     it 'returns books that were published in the past' do
       Book.create(
-        title: 'Something',
+        title: 'Rails 4 in Action',
         author: 'Ryan Bigg',
-        description: 'abc',
-        body: 'blah blah blah',
+        description: 'non-fiction',
+        summary: 'Book about Rails',
         published_at: 1.month.from_now
       )
       past_post = Book.create(
-        title: 'Something',
+        title: 'Rails 4 in Action',
         author: 'Ryan Bigg',
-        description: 'abc',
-        body: 'blah blah blah',
+        description: 'non-fiction',
+        summary: 'Book about Rails',
         published_at: 1.week.ago
       )
       todays_post = Book.create(
-        title: 'Something',
+        title: 'Rails 4 in Action',
         author: 'Ryan Bigg',
-        description: 'abc',
-        body: 'blah blah blah',
+        description: 'non-fiction',
+        summary: 'Book about Rails',
         published_at: Date.today
       )
 
@@ -39,10 +39,10 @@ RSpec.describe Book, type: :model do
 
     it 'does not include books where published_at is nil' do
       Book.create(
-        title: 'Something',
+        title: 'Rails 4 in Action',
         author: 'Ryan Bigg',
-        description: 'abc',
-        body: 'blah blah blah',
+        description: 'non-fiction',
+        summary: 'Book about Rails',
         published_at: nil
       )
 
