@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'book.rb'
 
 RSpec.describe Book, type: :model do
   context 'Validations' do
