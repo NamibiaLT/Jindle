@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?('/')
   "https://github.com/#{repo_name}.git"
 end
 
@@ -30,20 +30,20 @@ gem 'jbuilder', '~> 2.5'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
-  gem "awesome_print"
-  gem "factory_bot_rails"
-  gem "pry-byebug"
-  gem "rspec-rails", "3.7.2"
+  gem 'awesome_print'
+  gem 'factory_bot_rails'
+  gem 'pry-byebug'
+  gem 'rspec-rails', '3.7.2'
 end
 
 group :test do
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
-  gem "database_cleaner"
-  gem "launchy" # save_and_open_page
-  gem "timecop"
-  gem "shoulda-matchers", git: "https://github.com/thoughtbot/shoulda-matchers.git", branch: "rails-5"
+  gem 'database_cleaner'
+  gem 'launchy' # save_and_open_page
+  gem 'timecop'
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 group :development do
