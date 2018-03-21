@@ -1,13 +1,16 @@
 require 'rails_helper'
-require 'mongoid'
-require 'book.rb'
 
 RSpec.describe Book, type: :model do
+  context 'Mongoid document' do
+    it { is_expected.to be_mongoid_document }
+    it { is_expected.to have_timestamps }
+  end
+
   context 'Validations' do
-    it { is_expected.to validates_presence_of(:title) }
-    it { is_expected.to validates_presence_of(:author) }
-    it { is_expected.to validates_presence_of(:description) }
-    it { is_expected.to validates_presence_of(:summary) }
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_presence_of(:author) }
+    it { is_expected.to validate_presence_of(:description) }
+    it { is_expected.to validate_presence_of(:summary) }
   end
 
   describe '.published' do
@@ -19,14 +22,14 @@ RSpec.describe Book, type: :model do
         summary: 'Book about Rails',
         published_at: 1.month.from_now
       )
-      past_post = Book.create(
+      past_book = Book.create(
         title: 'Rails 4 in Action',
         author: 'Ryan Bigg',
         description: 'non-fiction',
         summary: 'Book about Rails',
         published_at: 1.week.ago
       )
-      todays_post = Book.create(
+      todays_book = Book.create(
         title: 'Rails 4 in Action',
         author: 'Ryan Bigg',
         description: 'non-fiction',
@@ -35,7 +38,7 @@ RSpec.describe Book, type: :model do
       )
 
       expect(Book.published.size).to eq 2
-      expect(Book.published.to_a).to eq [todays_post, past_post]
+      expect(Book.published.to_a).to eq [todays_book, past_book]
     end
 
     it 'does not include books where published_at is nil' do

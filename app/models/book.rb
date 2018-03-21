@@ -1,5 +1,6 @@
 class Book
   include Mongoid::Document
+  include Mongoid::Timestamps
   field :title, type: String
   field :author, type: String
   field :description, type: String
@@ -9,6 +10,6 @@ class Book
   validates :title, :author, :description, :summary, presence: true
 
   def self.published
-    where(:published_at.lte => Date.today).order_by(published_at: :desc)
+    where(:published_at.lt => Date.tomorrow).order_by(published_at: :desc)
   end
 end
