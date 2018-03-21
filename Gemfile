@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'simple_form'
+
 group :development, :test do
   gem 'awesome_print'
   gem 'factory_bot_rails'
