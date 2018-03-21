@@ -15,40 +15,15 @@ RSpec.describe Book, type: :model do
 
   describe '.published' do
     it 'returns books that were published in the past' do
-      Book.create(
-        title: 'Rails 4 in Action',
-        author: 'Ryan Bigg',
-        description: 'non-fiction',
-        summary: 'Book about Rails',
-        published_at: 1.month.from_now
-      )
-      past_book = Book.create(
-        title: 'Rails 4 in Action',
-        author: 'Ryan Bigg',
-        description: 'non-fiction',
-        summary: 'Book about Rails',
-        published_at: 1.week.ago
-      )
-      todays_book = Book.create(
-        title: 'Rails 4 in Action',
-        author: 'Ryan Bigg',
-        description: 'non-fiction',
-        summary: 'Book about Rails',
-        published_at: Date.today
-      )
+      create(:book, title: 'a', published_at: 1.month.from_now)
+      past_book = create(:book, title: 'b', published_at: 1.week.ago)
+      todays_book = create(:book, title: 'c', published_at: Date.today)
 
-      expect(Book.published.size).to eq 2
       expect(Book.published.to_a).to eq [todays_book, past_book]
     end
 
     it 'does not include books where published_at is nil' do
-      Book.create(
-        title: 'Rails 4 in Action',
-        author: 'Ryan Bigg',
-        description: 'non-fiction',
-        summary: 'Book about Rails',
-        published_at: nil
-      )
+      create(:book, published_at: nil)
 
       expect(Book.published).to eq []
     end
