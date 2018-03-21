@@ -1,0 +1,12 @@
+<%= simple_form_for @books do |f| %>
+  <%= f.input :title %>
+  <%= f.input :author %>
+  <p>
+    <%= f.input :description, as: :text %>
+  </p>
+
+  <p>
+    <%= f.input :summary, required: false, as: :text %>
+  </p>
+  <%= f.button :submit %>
+<% end %>
