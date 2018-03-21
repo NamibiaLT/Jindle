@@ -37,13 +37,14 @@ group :development, :test do
 end
 
 group :test do
+  gem 'mongoid-rspec'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'launchy' # save_and_open_page
   gem 'timecop'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  # gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
 end
 
 group :development do
