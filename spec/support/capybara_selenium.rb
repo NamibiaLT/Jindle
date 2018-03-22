@@ -13,6 +13,7 @@ RSpec.configure do |config|
   # ...
   config.before(:each, type: :feature) do
     # Note (Mike Coutermarsh): Make browser huge so that no content is hidden during tests
-    Capybara.current_session.driver.browser.manage.window.resize_to(2_500, 2_500)
+    Capybara.current_session.driver.browser.manage.window
+    # .resize_to(2_500, 2_500)
   end
 end
