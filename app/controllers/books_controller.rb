@@ -14,7 +14,8 @@ class BooksController < ApplicationController
       flash[:notice] = 'Book has been created.'
       redirect_to @books
     else
-      #nothing yet
+      flash.now[:alert] = 'Missing field, book could not be created'
+      render 'new'
     end
   end
 

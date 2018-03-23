@@ -1,12 +1,12 @@
 <%= simple_form_for @books do |f| %>
-  <%= f.input :title %>
-  <%= f.input :author %>
+  <%= f.input :title, error: 'Missing field, book could not be created' %>
+  <%= f.input :author, error: 'Missing field, book could not be created' %>
   <p>
-    <%= f.input :description, as: :text %>
+    <%= f.input :description, as: :text, error: 'Missing field, book could not be created' %>
   </p>
 
   <p>
-    <%= f.input :summary, as: :text %>
+    <%= f.input :summary, as: :text, error: 'Missing field, book could not be created' %>
   </p>
   <%= f.button :submit %>
 <% end %>
