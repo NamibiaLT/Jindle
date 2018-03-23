@@ -1,11 +1,13 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can create their own books' do
-
-  def create_book
+  before do
     visit root_path
 
     click_on 'New Book'
+  end
+
+  def create_book
     fill_in 'Title', with: 'Soho'
     fill_in 'Author', with: 'Bobby J.'
     fill_in 'Description', with: 'Non-fiction'
