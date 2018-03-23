@@ -35,3 +35,18 @@ RSpec.feature 'Users can create their own books' do
     expect(page).to have_title title
   end
 end
+
+RSpec.feature 'Users can not create a book' do
+  scenario 'when an attribute is missing' do
+    visit root_path
+
+    click_on 'New Book'
+    fill_in 'Title', with: ''
+    fill_in 'Author', with: 'Bobby J.'
+    fill_in 'Description', with: 'Non-fiction'
+    fill_in 'Summary', with: 'A book about housing in NYC.'
+    click_on 'Create Book'
+
+    expect(page).to have_content 'Missing field, book could not be created'
+  end
+end
