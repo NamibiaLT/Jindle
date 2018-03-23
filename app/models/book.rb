@@ -10,6 +10,6 @@ class Book
   validates :title, :author, :description, :summary, presence: true
 
   def self.published
-    where(:published_at.lt => Date.tomorrow).order_by(published_at: :desc)
+    where(:published_at.lte => Date.tomorrow).order_by(published_at: :desc)
   end
 end

@@ -17,9 +17,8 @@ RSpec.describe Book, type: :model do
     it 'returns books that were published in the past' do
       create(:book, title: 'a', published_at: 1.month.from_now)
       past_book = create(:book, title: 'b', published_at: 1.week.ago)
-      todays_book = create(:book, title: 'c', published_at: Date.today)
 
-      expect(Book.published.to_a).to eq [todays_book, past_book]
+      expect(Book.published.to_a).to eq [past_book]
     end
 
     it 'does not include books where published_at is nil' do
