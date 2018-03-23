@@ -19,11 +19,15 @@ RSpec.feature 'Users can create their own books' do
     expect(page).to have_content 'Book has been created.'
   end
 
-  scenario 'with correctly implemented title' do
+  scenario 'with correctly implemented title in the title path' do
     create_book
 
     book = Book.find_by(title: 'Soho')
     expect(page.current_path).to eq book_path(book)
+  end
+
+  scenario 'with a title' do
+    create_book
 
     title = 'Jindle'
     expect(page).to have_title title
