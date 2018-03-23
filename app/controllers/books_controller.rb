@@ -10,7 +10,6 @@ class BooksController < ApplicationController
 
   def create
     @books = Book.new(book_params)
-
     if @books.save
       flash[:notice] = 'Book has been created.'
       redirect_to @books
@@ -26,6 +25,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :description)
+    params.require(:book).permit(:title, :author, :description, :summary)
   end
 end

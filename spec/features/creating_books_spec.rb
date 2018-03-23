@@ -14,11 +14,12 @@ RSpec.feature 'Users can create their own books' do
     expect(page).to have_content 'Book has been created.'
   end
 
-  # scenario 'title is correctly implemented' do
-  #   book = Book.find_by(title: 'Jindle')
-  #   expect(page.current_url).to eq book_url(book)
+  scenario 'title is correctly implemented' do
+    pending "Not implemented yet"
+    book = Book.find_by(title: 'Jindle')
+    expect(page.current_url).to eq book_url(book)
 
-  #   title = 'Your Books'
-  #   expect(page).to have_title title
-  # end
+    title = 'Your Books'
+    expect(page).to have_title title
+  end
 end
