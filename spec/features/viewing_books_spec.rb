@@ -5,7 +5,7 @@ RSpec.feature 'Users are able to view books' do
     book = FactoryBot.create(:book, title: 'Something')
 
     visit root_path
-    click_on 'New Book'
+    click_on 'Saved Books'
 
     expect(page.current_path).to eq book_path(book)
   end
