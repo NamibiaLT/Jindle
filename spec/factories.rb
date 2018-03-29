@@ -1,6 +1,6 @@
 FactoryBot.define do
-  factory :model do
-    
+  factory :user do
+    name 'Jindle App'
   end
   factory :book do
     title 'Hello'
