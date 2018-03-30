@@ -28,6 +28,14 @@ class BooksController < ApplicationController
     @books = Book.find(params[:id])
   end
 
+  def update
+    @books = Book.find(params[:id])
+    @books.update(book_params)
+
+    flash[:notice] = 'Book has been updated.'
+    redirect_to @books
+  end
+
   private
 
   def book_params
