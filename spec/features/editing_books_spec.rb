@@ -5,7 +5,7 @@ RSpec.feature 'Users can edit the books they have created' do
     FactoryBot.create(:book, title: 'Hello')
 
     visit root_path
-    # click_on 'Hello'
+    click_on 'Hello'
     click_on 'Edit Book'
   end
   scenario 'when attributes are valid' do
