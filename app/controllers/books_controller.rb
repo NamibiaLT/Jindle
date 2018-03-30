@@ -30,10 +30,13 @@ class BooksController < ApplicationController
 
   def update
     @books = Book.find(params[:id])
-    @books.update(book_params)
-
-    flash[:notice] = 'Book has been updated.'
-    redirect_to @books
+    if @books.update(book_params)
+      flash[:notice] = 'Book has been updated.'
+      redirect_to @books
+    else
+      flash.now[:alert] = 'Book has not been updated.'
+      render 'edit'
+    end
   end
 
   private
