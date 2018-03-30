@@ -1,1 +1,12 @@
-# Will move in code from new.html.erb into this file.
+<%= simple_form_for books do |f| %>
+  <%= f.input :title, error: 'Missing field, book could not be created' %>
+  <%= f.input :author, error: 'Missing field, book could not be created' %>
+  <p>
+    <%= f.input :description, as: :text, error: 'Missing field, book could not be created' %>
+  </p>
+
+  <p>
+    <%= f.input :summary, as: :text, error: 'Missing field, book could not be created' %>
+  </p>
+  <%= f.button :submit %>
+<% end %>
