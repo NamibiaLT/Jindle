@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :set_book, only: [:show, :edit, :update, :destroy]
 
   def index
     @books = Book.published
@@ -21,15 +21,12 @@ class BooksController < ApplicationController
   end
 
   def show
-    @books = Book.find(params[:id])
   end
 
   def edit
-    @books = Book.find(params[:id])
   end
 
   def update
-    @books = Book.find(params[:id])
     if @books.update(book_params)
       flash[:notice] = 'Book has been updated.'
       redirect_to @books
@@ -40,7 +37,6 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @books = Book.find(params[:id])
     @books.destroy
 
     flash[:notice] = 'Book has been deleted.'
@@ -51,5 +47,12 @@ class BooksController < ApplicationController
 
   def book_params
     params.require(:book).permit(:title, :author, :description, :summary)
+  end
+
+  def set_book
+    @books = Book.find(params[:id])
+  rescue Mongoid::Errors::DocumentNotFound
+    flash[:alert] = 'The book you were trying to find could not be found.'
+    redirect_to book_path
   end
 end
