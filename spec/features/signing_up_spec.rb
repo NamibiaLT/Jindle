@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature 'signing up' do
   before do
     visit new_user_registration_path
+    click_on 'Sign up'
   end
 
   scenario 'user signs up' do
