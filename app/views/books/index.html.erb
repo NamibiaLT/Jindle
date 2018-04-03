@@ -1,7 +1,7 @@
 <h1>Your Books:</h1>
 
 <%= link_to 'New Book', new_book_path %>
-<%= link_to 'Saved Books', book_path %>
+<%= link_to 'Saved Books', books_path %>
 
 <div id='books'>
   <% @books.each do |book| %>
